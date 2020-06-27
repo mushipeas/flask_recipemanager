@@ -13,11 +13,11 @@
     <hgroup class="mb20">
         <h1>Search Results</h1>
         {% if results|length < 1 %}
-        <h2 class="lead">No results were found for the search for <strong
-                class="text-danger">{{terms}}</strong></h2>
+        <h2 class="lead">No results were found for "<strong
+                class="text-danger">{{terms}}</strong>"</h2>
         {% else %}
-        <h2 class="lead"><strong class="text-danger">{{results_count}}</strong> results were found for the search for <strong
-                class="text-danger">{{terms}}</strong></h2>
+        <h2 class="lead"><strong class="text-danger">{{results_count}}</strong> results were found for "<strong
+                class="text-danger">{{terms}}</strong>"</h2>
         {% endif %}
     </hgroup>
 
@@ -25,7 +25,7 @@
         {% for result in results %}
         <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="{{result.title}}" class="thumbnail"><img src="http://lorempixel.com/250/140/people"
+                <a href="#" title="{{result.title}}" class="thumbnail"><img src="{{ url_for('static', filename=result.img_file[9:]) }}"
                         alt="{{result.title}}" /></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
@@ -36,9 +36,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
                 <h3><a href="{{result.url}}" title="">{{result.title}}</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit,
-                    distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus
-                    doloremque.</p>
+                <p>{{result.desc}}</p>
             </div>
             <span class="clearfix borda"></span>
         </article>
@@ -46,11 +44,11 @@
         
         <div class="container" style="width:max-content;">
             {% if p | int > 1 %}
-            <button class="page-btn l-btn" href="{{ url_for('search', category=category, terms=terms, p=p|int-1) }}">Previous Page
+            <button type="button" class="btn btn-outline-dark l-btn" onclick='location.href="{{ url_for('search', category=category, terms=terms, p=p|int-1) }}"'>Previous Page
             </button>
             {% endif %}
             {% if next_page < results_count/12 %}
-            <button class="page-btn r-btn" href="{{ url_for('search', category=category, terms=terms, p=next_page) }}">Next Page
+            <button type="button" class="btn btn-outline-dark r-btn" onclick='location.href="{{ url_for('search', category=category, terms=terms, p=next_page) }}"'>Next Page
             </button>
             {% endif %}
         </div>
