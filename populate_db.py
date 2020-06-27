@@ -20,11 +20,12 @@ def to_recipe_model(recipe, category):
 if __name__ == "__main__":
 
     input_file = sys.argv[1]
+    category = sys.argv[2]
 
     with open(input_file) as file:
         recipes = json.load(file)
 
-    recipe_models = [to_recipe_model(recipe, "veg") for recipe in recipes]
+    recipe_models = [to_recipe_model(recipe, category) for recipe in recipes]
 
     db.session.bulk_save_objects(recipe_models)
     db.session.commit()
