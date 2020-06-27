@@ -6,6 +6,7 @@ testmodule.py
 testfile.txt
 ignore_list.json
 test.db
+recipes.db
 
 ### Python ###
 
