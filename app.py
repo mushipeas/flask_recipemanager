@@ -22,6 +22,7 @@ class Recipe(db.Model):
     def __repr__(self):
         return "<Recipe ID %r>" % self.id
 
+
 @app.route("/")
 def index():
     return render_template("index.html", categories=categories)
@@ -40,29 +41,36 @@ def search():
     if terms_:
         terms = ["%" + term + "%" for term in terms_.split()]
     else:
-        terms= [""]
+        terms = [""]
 
     if category in categories:
         results_ = db.session.query(Recipe).filter(Recipe.category == category)
     else:
         results_ = db.session.query(Recipe)
-    
+
     for term in terms:
         results_ = results_.filter(Recipe.title.like(term))
-        
-    
+
     results_per_page = 12
     result_offset = (page - 1) * results_per_page
-    
+
     results_count = results_.count()
     results = results_.offset(result_offset).limit(results_per_page).all()
 
     print(results_count)
 
-    return render_template("search_res.html", results=results, results_count=results_count, **search_params, next_page=page+1)
+    return render_template(
+        "search_res.html",
+        results=results,
+        results_count=results_count,
+        **search_params,
+        next_page=page + 1
+    )
 
 
 if __name__ == "__main__":
-    
-    categories = [category[0] for category in db.session.query(Recipe.category).distinct()]
+
+    categories = [
+        category[0] for category in db.session.query(Recipe.category).distinct()
+    ]
     app.run(debug=True)
