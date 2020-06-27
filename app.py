@@ -16,13 +16,11 @@ class Recipe(db.Model):
     category = db.Column(db.String(50))
     ingredients = db.Column(db.String(2000), nullable=False)
     instructions = db.Column(db.String(6000), nullable=False)
+    img_file = db.Column(db.String(300))
+    desc = db.Column(db.String(300))
 
     def __repr__(self):
         return "<Recipe ID %r>" % self.id
-
-
-categories = [category[0] for category in db.session.query(Recipe.category).distinct()]
-
 
 @app.route("/")
 def index():
@@ -34,7 +32,10 @@ def search():
     search_params = request.args.to_dict()
     category = search_params["category"] if "category" in search_params.keys() else None
     terms_ = search_params["terms"] if "terms" in search_params.keys() else None
-    page = int(search_params["p"]) if "p" in search_params.keys() else 1
+
+    if "p" not in search_params.keys():
+        search_params["p"] = "1"
+    page = int(search_params["p"])
 
     if terms_:
         terms = ["%" + term + "%" for term in terms_.split()]
@@ -62,4 +63,6 @@ def search():
 
 
 if __name__ == "__main__":
+    
+    categories = [category[0] for category in db.session.query(Recipe.category).distinct()]
     app.run(debug=True)
