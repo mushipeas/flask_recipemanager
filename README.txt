@@ -1,23 +1,35 @@
-Initialising project:
+# Flask_taskmanager
 
-Recommended:
-In root dir of project, run:
-python -m venv env
-This should create a virtual environment
+My first project using Flask and SQLAlchemy.
 
-To activate the environment:
-.\env\Scripts\activate (Windows)
-source env/bin/activate (UNIX)
+This follows the FreeCodeCamp Tutorial: https://www.youtube.com/watch?v=Z1RJmh_OqeA
 
-To install required packages:
-pip install -r requirements.txt
+## Setup
 
+Start a virtual environment in the base directory:
 
+    python -m venv .venv
 
-For dev:
-Once packages are installed and applied, using pip freeze will output all installed packages.
-pip freeze
+Activate the environment:
 
-See:
-https://pip.pypa.io/en/latest/user_guide/#requirements-files
+    .\.venv\Scripts\activate (Windows)
+    source .venv/bin/activate (UNIX)
 
+Install requirements:
+
+    pip install .
+
+## Initialise the sqlite database
+
+Open the python shell in the root directory:
+    
+    >>> from app import db
+    >>> db.create_all()
+
+This should generate `test.db`.
+
+## Start the app
+
+Run the following in the root directory:
+
+    python app.py
