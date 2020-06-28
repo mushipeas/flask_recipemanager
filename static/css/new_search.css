@@ -1,3 +1,5 @@
+@import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
 html {
   line-height: 1.15;
   /* 1 */
@@ -811,18 +813,9 @@ legend {
 }
 
 .s003 {
-  min-height: 100vh;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
   font-family: 'Poppins', sans-serif;
-  background-color: #dadada;
   background-size: cover;
   background-position: center center;
-  padding: 15px;
 }
 
 .s003 form {
@@ -841,7 +834,8 @@ legend {
   -ms-flex-align: center;
       align-items: center;
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  border-radius: 3px;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .s003 form .inner-form .input-field {
@@ -1030,10 +1024,98 @@ legend {
   }
 }
 
+
 .input-select {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+body {
+    background-color: #dadada;
+}
+
+.s003 {
+  margin: 1rem;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 1rem;
+}
+
+.overview {
+    margin: 1rem;
+    background-color: rgb(241, 241, 241);
+    border-width: 2px;
+    border-color: rgb(136, 136, 136);
+    border-radius: .5rem;
+}
+
+.result-header {
+   margin: 1rem;
+   padding-top: 1rem;
+}
+
+.grid-container {   
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+   grid-gap: 20px;
+   grid-auto-flow: row;
+   margin: 1rem;
+}
+
+.card {
+  border: 1px solid #d3d3d3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.bg-img {
+  background-size: cover;
+  min-height: 180px;
+  background-position: center;
+  background-color: #ccc;
+}
+
+.bg-img img {
+    max-width: 100%;
+}
+
+.content {
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.card-btn {
+  background-color: transparent;
+  border: 1px solid #2196F3;
+  padding: .5rem 1rem;  
+  cursor: pointer;
+  border-radius: .25rem;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.page-btn {
+    display: block;
+    border: none;
+    background-color: #e6e6e6;
+    padding: 10px 16px;
+    margin: 1rem;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.l-btn {
+    text-align: left;
+}
+
+.r-btn {
+    text-align: right;
 }

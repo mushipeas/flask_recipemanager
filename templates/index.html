@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 {% endblock %}
 
 {% block body %}
 <div class="s003">
-    <form action="/search/", method="GET">
+    <form action="/newsearch/", method="GET">
         <div class="inner-form">
             <div class="input-field first-wrap">
                 <div class="input-select">

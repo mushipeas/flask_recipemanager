@@ -68,6 +68,47 @@ def search():
     )
 
 
+@app.route("/newsearch/", methods=["GET", "POST"])
+def newsearch():
+    search_params = request.args.to_dict()
+    category = search_params["category"] if "category" in search_params.keys() else None
+    terms_ = search_params["terms"] if "terms" in search_params.keys() else None
+
+    if "p" not in search_params.keys():
+        search_params["p"] = "1"
+    page = int(search_params["p"])
+
+    if terms_:
+        terms = ["%" + term + "%" for term in terms_.split()]
+    else:
+        terms = [""]
+
+    if category in categories:
+        results_ = db.session.query(Recipe).filter(Recipe.category == category)
+    else:
+        results_ = db.session.query(Recipe)
+
+    for term in terms:
+        results_ = results_.filter(Recipe.title.like(term))
+
+    results_per_page = 12
+    result_offset = (page - 1) * results_per_page
+
+    results_count = results_.count()
+    results = results_.offset(result_offset).limit(results_per_page).all()
+
+    print(results_count)
+
+    return render_template(
+        "new_search_res.html",
+        categories=categories,
+        results=results,
+        results_count=results_count,
+        **search_params,
+        next_page=page + 1
+    )
+
+
 if __name__ == "__main__":
 
     categories = [
