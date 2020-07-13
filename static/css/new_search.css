@@ -237,6 +237,12 @@ body {
   border-radius: .5rem;
   overflow: hidden;
   box-shadow: 3px 8px 20px 3px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-bar form:focus-within {
+  box-shadow: 6px 16px 40px 6px rgba(0, 0, 0, 0.15);  
 }
 
 .search-bar form .search-textbox {
