@@ -1,8 +1,10 @@
-# Flask_taskmanager
+# Flask_recipemanager
 
-My first project using Flask and SQLAlchemy.
+A recipe-manager with scraped data from https://www.bbcgoodfood.com
 
-This follows the FreeCodeCamp Tutorial: https://www.youtube.com/watch?v=Z1RJmh_OqeA
+The initial data is present as json files under /recipes/.
+
+Multiple scripts have been set up to scrape additional data from the site (using beautifulsoup4), where initial data was missing. ie. downloading images and descriptions and associating them to items in the database.
 
 ## Setup
 
