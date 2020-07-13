@@ -1065,34 +1065,39 @@ body {
 }
 
 .card {
+  display: grid;
+  grid-template-rows: fit-content(600px) auto auto;
   border: 1px solid #d3d3d3;
   border-radius: 0.5rem;
   overflow: hidden;
   background-color: #ffffff;
+  align-items: start;
 }
 
 .bg-img {
   background-size: cover;
-  min-height: 180px;
   background-position: center;
   background-color: #ccc;
-}
-
-.bg-img img {
-    max-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  justify-self: center;
 }
 
 .content {
-  padding: 15px;
+  margin: 15px 15px 0 15px;
   background-color: #ffffff;
+  align-self: start;
 }
 
-.card-btn {
+.card-btn {  
+  margin: 0px 15px 15px 15px;
   background-color: transparent;
   border: 1px solid #2196F3;
   padding: .5rem 1rem;  
   cursor: pointer;
   border-radius: .25rem;
+  justify-self: start;
+  align-self: end;
 }
 
 .btn-container {

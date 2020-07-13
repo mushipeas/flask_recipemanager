@@ -52,14 +52,12 @@
     <div class="grid-container">
         {% for result in results %}
         <div class="card">
-            <div class="bg-img">
-                <img src="{{ url_for('static', filename=result.img_file[9:]) }}" alt="{{result.title}}" />
-            </div>
+            <img class="bg-img" src="{{ url_for('static', filename=result.img_file[9:]) }}" alt="{{result.title}}" />
             <div class="content">
                 <h4>{{result.title}}</h4>
                 <p>{{result.desc}}</p>
-                <a class="card-btn" href="{{result.url}}">Recipe</a>
             </div>
+            <a class="card-btn" href="{{result.url}}">Recipe</a>
         </div>
         {% endfor %}
     </div>
