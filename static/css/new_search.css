@@ -242,11 +242,12 @@ body {
 }
 
 .search-bar form:focus-within {
-  box-shadow: 6px 16px 40px 6px rgba(0, 0, 0, 0.15);  
+  box-shadow: 6px 16px 40px 6px rgba(0, 0, 0, 0.15);
 }
 
 .search-bar form .search-textbox {
   border: 0;
+  outline: none;
   text-align: center;
   font-size: 1.5em;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
