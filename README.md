@@ -4,7 +4,7 @@ A recipe-manager with scraped data from https://www.bbcgoodfood.com
 
 The initial data is present as json files under /recipes/.
 
-Multiple scripts have been set up to scrape additional data from the site (using beautifulsoup4), where initial data was missing. ie. downloading images and descriptions and associating them to items in the database.
+Multiple scripts have been set up to scrape additional data from the site (using beautifulsoup4), where initial data was missing. ie. fetching image urls and descriptions, and associating them to items in the database.
 
 A demo can be seen at:
 https://damp-reef-19532.herokuapp.com/
@@ -39,9 +39,9 @@ Alternatively, run `initdb.py`.
 
 Run:
 
-    python populate_db.py [inputfile.json] [category]
+    python populate_db.py [inputfile.json]
 
-This will populate the db with `inputfile.json` data under the `category` category.
+This will populate the db with `inputfile.json`. Sample files can be found under `./recipes`.
 
 ## Get images and descriptions
 
@@ -49,7 +49,7 @@ Run:
 
     python get_img_desc.py
 
-The script will use the urls in the database to download img files to /static/img and update the location and description in the database rows.
+The script will use the urls in the database to get image urls and update missing entries for these and the descriptions in the database rows.
 
 ## Start the app
 
