@@ -25,13 +25,12 @@ class Recipe(db.Model):
 
 @app.route("/")
 def index():
-    return render_template("index.html", categories=categories)
+    return render_template("index.html")
 
 
 @app.route("/search/", methods=["GET", "POST"])
 def newsearch():
     search_params = request.args.to_dict()
-    category = search_params["category"] if "category" in search_params.keys() else None
     terms_ = search_params["terms"] if "terms" in search_params.keys() else None
 
     if "p" not in search_params.keys():
@@ -43,10 +42,7 @@ def newsearch():
     else:
         terms = [""]
 
-    if category in categories:
-        results_ = db.session.query(Recipe).filter(Recipe.category == category)
-    else:
-        results_ = db.session.query(Recipe)
+    results_ = db.session.query(Recipe)
 
     for term in terms:
         results_ = results_.filter(Recipe.title.like(term))
@@ -61,7 +57,6 @@ def newsearch():
 
     return render_template(
         "new_search_res.html",
-        categories=categories,
         results=results,
         results_count=results_count,
         **search_params,
@@ -71,7 +66,4 @@ def newsearch():
 
 if __name__ == "__main__":
 
-    categories = [
-        category[0] for category in db.session.query(Recipe.category).distinct()
-    ]
     app.run(debug=True)

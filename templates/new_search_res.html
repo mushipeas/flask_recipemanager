@@ -50,14 +50,14 @@ onblur="this.placeholder = 'Search..'"/>
     <div class="btn-container">
         {% if p | int > 1 %}
         <a type="button" class="btn page-btn btn-outline-dark l-btn"
-            onclick='location.href="{{ url_for('newsearch', category=category, terms=terms, p=p|int-1) }}"'>Previous Page
+            onclick='location.href="{{ url_for('newsearch', terms=terms, p=p|int-1) }}"'>Previous Page
         </a>
         {% else %}
         <div></div>
         {% endif %}
         {% if p | int < results_count/12 %}
         <a type="button" class="btn page-btn btn-outline-dark r-btn"
-            onclick='location.href="{{ url_for('newsearch', category=category, terms=terms, p=next_page) }}"'>Next Page
+            onclick='location.href="{{ url_for('newsearch', terms=terms, p=next_page) }}"'>Next Page
         </a>
         {% else %}
         <div></div>
