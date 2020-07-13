@@ -15,7 +15,7 @@ recipes = db.session.query(Recipe).all()
 updated_recipes = []
 
 for recipe in tqdm(recipes):
-    if recipe.img_file == None or recipe.desc == None:
+    if recipe.img_url == None or recipe.desc == None:
         try:
             res = get(recipe.url, headers=request_headers)
         except:
@@ -24,7 +24,7 @@ for recipe in tqdm(recipes):
             soup = BeautifulSoup(res.content, "html.parser")
 
             # get image
-            if recipe.img_file == None:
+            if recipe.img_url == None:
                 try:
                     img_url = soup.find(
                         "div", attrs={"class": "recipe-header__media"}
@@ -33,16 +33,8 @@ for recipe in tqdm(recipes):
                     print("Error getting img_url from " + recipe.url)
                     img_url = None
                 else:
-                    img_file = "./static/img/" + str(recipe.id) + ".jpg"
-                    try:
-                        img = get("http:" + img_url, headers=request_headers)
-                    except:
-                        print("failed to get res for " + img_url)
-                    else:
-                        with open(img_file, "wb") as f:
-                            f.write(img.content)
-                        recipe.img_file = img_file
-                        db.session.commit()
+                    recipe.img_url = img_url
+                    db.session.commit()
             # get desc
             if recipe.desc == None:
                 try:

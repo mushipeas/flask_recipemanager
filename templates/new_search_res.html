@@ -37,7 +37,7 @@ onblur="this.placeholder = 'Search..'"/>
     <div class="grid-container">
         {% for result in results %}
         <div class="card">
-            <img class="bg-img" src="{{ url_for('static', filename=result.img_file[9:]) }}" alt="{{result.title}}" />
+            <img class="bg-img" src="{{result.img_url}}" alt="{{result.title}}" />
             <div class="content">
                 <h4>{{result.title}}</h4>
                 <p>{{result.desc}}</p>
