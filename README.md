@@ -28,7 +28,25 @@ Open the python shell in the root directory:
     >>> from app import db
     >>> db.create_all()
 
-This should generate `test.db`.
+This should generate `recipes.db`.
+
+Alternatively, run `initdb.py`.
+
+## Populate recipes.db
+
+Run:
+
+    python populate_db.py [inputfile.json] [category]
+
+This will populate the db with `inputfile.json` data under the `category` category.
+
+## Get images and descriptions
+
+Run:
+
+    python get_img_desc.py
+
+The script will use the urls in the database to download img files to /static/img and update the location and description in the database rows.
 
 ## Start the app
 
