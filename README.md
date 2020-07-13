@@ -6,6 +6,9 @@ The initial data is present as json files under /recipes/.
 
 Multiple scripts have been set up to scrape additional data from the site (using beautifulsoup4), where initial data was missing. ie. downloading images and descriptions and associating them to items in the database.
 
+A demo can be seen at:
+https://damp-reef-19532.herokuapp.com/
+
 ## Setup
 
 Start a virtual environment in the base directory:
