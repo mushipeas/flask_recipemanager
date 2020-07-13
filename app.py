@@ -13,10 +13,9 @@ class Recipe(db.Model):
     title = db.Column(db.String(100), nullable=False)
     total_time_minutes = db.Column(db.Integer)
     yields = db.Column(db.String(50))
-    category = db.Column(db.String(50))
     ingredients = db.Column(db.String(2000), nullable=False)
     instructions = db.Column(db.String(6000), nullable=False)
-    img_file = db.Column(db.String(300))
+    img_url = db.Column(db.String(300))
     desc = db.Column(db.String(300))
 
     def __repr__(self):
