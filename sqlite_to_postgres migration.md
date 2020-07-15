@@ -6,7 +6,7 @@ Pull:
 
     docker pull postgres
 
-Run with port 5432 & persistent storage:
+Start with port 5432 & persistent storage:
 
     docker run --rm --name pg-docker -e POSTGRES_PASSWORD=tempass -d -p 5432:5432 -v /local/dir/for/permanent/files/:/var/lib/postgresql/data  postgres
 
@@ -17,7 +17,7 @@ Pull:
 
     docker pull dpage/pgadmin4
 
-Run:
+Start the container:
 
     docker run -p 80:80 ^
         -e "PGADMIN_DEFAULT_EMAIL=email@gmail.com"  ^
@@ -32,7 +32,7 @@ Details for docker psql:
     password: tempass
 
 ## pgloader:
-pgload.load file:
+`pgload.load` file:
 
     load database  
         from 'recipes.db'  
@@ -51,6 +51,8 @@ Docker command to migrate:
 Dump postgres database into backup file:
 
     docker exec pg-docker sh -c "PGPASSWORD=tempass pg_dump -Fc --no-acl --no-owner -h localhost -U postgres recipes > /var/lib/postgresql/data/recipes.dump"
+
+This should generate a `recipes.dump` file under `/local/dir/for/permanent/files/` that was set when the `pg-docker` container was run.
 
 ## Upload dump file to Heroku postgres:
 The file needs to be uploaded to a site where a URL can be generated.
