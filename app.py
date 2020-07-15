@@ -1,9 +1,17 @@
+import os
 from datetime import datetime
+
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
+
+if "DATABASE_URL" in os.environ:
+    DATABASE_URL = os.environ['DATABASE_URL']
+else:
+    DATABASE_URL = "postgresql://postgres:tempass@host.docker.internal/recipes"
+
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///recipes.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 db = SQLAlchemy(app)
 
 
