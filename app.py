@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 if "DATABASE_URL" in os.environ:
-    DATABASE_URL = os.environ['DATABASE_URL']
+    DATABASE_URL = os.environ['DATABASE_URL'] + '/recipes'
 else:
     DATABASE_URL = "postgresql://postgres:tempass@host.docker.internal/recipes"
 
