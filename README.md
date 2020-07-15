@@ -4,6 +4,8 @@ A recipe-manager with scraped data from https://www.bbcgoodfood.com
 
 The initial data is present as json files under /recipes/.
 
+The database has been migrated from sqlite (used in early production) to postgresql (heroku-postgresql, for the demo server).
+
 Multiple scripts have been set up to scrape additional data from the site (using beautifulsoup4), where initial data was missing. ie. fetching image urls and descriptions, and associating them to items in the database.
 
 A demo can be seen at:
@@ -22,20 +24,27 @@ Activate the environment:
 
 Install requirements:
 
-    pip install .
+    pip install -r requirements.txt
 
-## Initialise the sqlite database
+Development requirements (additional):
 
-Open the python shell in the root directory:
-    
-    >>> from app import db
-    >>> db.create_all()
+    pip install -r requirements-dev.txt
 
-This should generate `recipes.db`.
+## Starting with existing sqlite db
 
-Alternatively, run `initdb.py`.
+Change `DATABASE_URL` in app.py to:
+    DATABASE_URL = "sqlite:///recipes.db"
 
-## Populate recipes.db
+## Starting from scratch:
+
+### Initialise the sqlite database
+Change the database url as above (in 'starting with existing sqlite db' section).
+
+Run:
+
+    python initdb.py
+
+### Populate recipes.db
 
 Run:
 
@@ -43,13 +52,17 @@ Run:
 
 This will populate the db with `inputfile.json`. Sample files can be found under `./recipes`.
 
-## Get images and descriptions
+### Get images and descriptions
 
 Run:
 
     python get_img_desc.py
 
 The script will use the urls in the database to get image urls and update missing entries for these and the descriptions in the database rows.
+
+## Migrating to postgres (or Heroku)
+
+Follow the documentated steps in `sqlite_to_postgres migration.md`.
 
 ## Start the app
 
