@@ -8,6 +8,8 @@ ignore_list.json
 test.db
 recipes.db.*
 /static/img/*
+/sqldump
+/postgres
 
 ### Python ###
 
