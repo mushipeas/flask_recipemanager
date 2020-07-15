@@ -50,7 +50,7 @@ Docker command to migrate:
 ## Dump psql db into file:
 Dump postgres database into backup file:
 
-    docker exec -it pg-docker PGPASSWORD=tempass pg_dump -Fc --no-acl --no-owner -h localhost -U postgres recipes > /var/lib/postgresql/data/recipes.dump
+    docker exec pg-docker sh -c "PGPASSWORD=tempass pg_dump -Fc --no-acl --no-owner -h localhost -U postgres recipes > /var/lib/postgresql/data/recipes.dump"
 
 ## Upload dump file to Heroku postgres:
 The file needs to be uploaded to a site where a URL can be generated.
