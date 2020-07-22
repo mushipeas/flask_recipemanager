@@ -30,7 +30,7 @@ Development requirements (additional):
 
     pip install -r requirements-dev.txt
 
-The system is currently set up to work with the database migrated to postgresql.
+The app is currently set up to work with the database migrated to postgresql.
 
 ## Starting with existing sqlite db
 
