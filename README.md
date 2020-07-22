@@ -42,13 +42,13 @@ Change the database url as above (in 'starting with existing sqlite db' section)
 
 Run:
 
-    python initdb.py
+    python ./db_helpers/init_db.py
 
 ### Populate recipes.db
 
 Run:
 
-    python populate_db.py [inputfile.json]
+    python ./db_helpers/populate_db.py [inputfile.json]
 
 This will populate the db with `inputfile.json`. Sample files can be found under `./recipes`.
 
