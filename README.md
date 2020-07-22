@@ -30,39 +30,17 @@ Development requirements (additional):
 
     pip install -r requirements-dev.txt
 
+The system is currently set up to work with the database migrated to postgresql.
+
 ## Starting with existing sqlite db
 
 Change `DATABASE_URL` in app.py to:
     DATABASE_URL = "sqlite:///recipes.db"
 
-## Starting from scratch:
-
-### Initialise the sqlite database
-Change the database url as above (in 'starting with existing sqlite db' section).
-
-Run:
-
-    python ./db_helpers/init_db.py
-
-### Populate recipes.db
-
-Run:
-
-    python ./db_helpers/populate_db.py [inputfile.json]
-
-This will populate the db with `inputfile.json`. Sample files can be found under `./recipes`.
-
-### Get images and descriptions
-
-Run:
-
-    python get_img_desc.py
-
-The script will use the urls in the database to get image urls and update missing entries for these and the descriptions in the database rows.
-
 ## Migrating to postgres (or Heroku)
 
 Follow the documentated steps in `sqlite_to_postgres migration.md`.
+This will migrate the sqlite data to your personal postgresql database.
 
 ## Start the app
 
